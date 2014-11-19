@@ -1,4 +1,4 @@
-# The official volt.mobi Objective-C style guide (base on raywenderlich.com style guide)
+# The official volt.mobi Objective-C style guide (based on raywenderlich.com style guide)
 
 This style guide outlines the coding conventions at [VoltMobi](http://volt.mobi) 
 
