@@ -4,7 +4,7 @@ This style guide outlines the coding conventions at [VoltMobi](http://volt.mobi)
 
 ## Credits
 
-Our style guide are mostly based on [raywenderlich.com](https://github.com/raywenderlich/objective-c-style-guide) Objective-C Style Guide.
+Our style guide are mostly based on [raywenderlich.com Objective-C Style Guide](https://github.com/raywenderlich/objective-c-style-guide).
 
 ## Background
 
@@ -170,14 +170,14 @@ UIButton *settingsButton;
 UIButton *setBut;
 ```
 
-A three letter prefix should always be used for class names and constants, however may be omitted for Core Data entity names. For any official raywenderlich.com books, starter kits, or tutorials, the prefix 'RWT' should be used.
+A three letter prefix should always be used for class names and constants, however may be omitted for Core Data entity names. 
 
 Constants should be camel-case with all words capitalized and prefixed by the related class name for clarity.
 
 **Preferred:**
 
 ```objc
-static NSTimeInterval const RWTTutorialViewControllerNavigationFadeAnimationDuration = 0.3;
+static NSTimeInterval const VMTutorialViewControllerNavigationFadeAnimationDuration = 0.3;
 ```
 
 **Not Preferred:**
@@ -245,7 +245,7 @@ Direct access to instance variables that 'back' properties should be avoided exc
 **Preferred:**
 
 ```objc
-@interface RWTTutorial : NSObject
+@interface VMTutorial : NSObject
 
 @property (strong, nonatomic) NSString *tutorialName;
 
@@ -255,7 +255,7 @@ Direct access to instance variables that 'back' properties should be avoided exc
 **Not Preferred:**
 
 ```objc
-@interface RWTTutorial : NSObject {
+@interface VMTutorial : NSObject {
     NSString *tutorialName;
 }
 ```
@@ -343,15 +343,15 @@ Constants are preferred over in-line string literals or numbers, as they allow f
 **Preferred:**
 
 ```objc
-static NSString * const RWTAboutViewControllerCompanyName = @"RayWenderlich.com";
+static NSString * const VMAboutViewControllerCompanyName = @"voltmobi.com";
 
-static CGFloat const RWTImageThumbnailHeight = 50.0;
+static CGFloat const VMImageThumbnailHeight = 50.0;
 ```
 
 **Not Preferred:**
 
 ```objc
-#define CompanyName @"RayWenderlich.com"
+#define CompanyName @"voltmobi.com"
 
 #define thumbnailHeight 2
 ```
@@ -363,21 +363,21 @@ When using `enum`s, it is recommended to use the new fixed underlying type speci
 **For Example:**
 
 ```objc
-typedef NS_ENUM(NSInteger, RWTLeftMenuTopItemType) {
-  RWTLeftMenuTopItemMain,
-  RWTLeftMenuTopItemShows,
-  RWTLeftMenuTopItemSchedule
+typedef NS_ENUM(NSInteger, VMLeftMenuTopItemType) {
+  VMLeftMenuTopItemMain,
+  VMLeftMenuTopItemShows,
+  VMLeftMenuTopItemSchedule
 };
 ```
 
 You can also make explicit value assignments (showing older k-style constant definition):
 
 ```objc
-typedef NS_ENUM(NSInteger, RWTGlobalConstants) {
-    RWTPinSizeMin = 1,
-    RWTPinSizeMax = 5,
-    RWTPinCountMin = 100,
-    RWTPinCountMax = 500,
+typedef NS_ENUM(NSInteger, VMGlobalConstants) {
+    VMPinSizeMin = 1,
+    VMPinSizeMax = 5,
+    VMPinCountMin = 100,
+    VMPinCountMax = 500,
 };
 ```
 
@@ -437,16 +437,16 @@ switch (condition) {
 When using an enumerated type for a switch, 'default' is not needed.   For example:
 
 ```objc
-RWTLeftMenuTopItemType menuType = RWTLeftMenuTopItemMain;
+VMLeftMenuTopItemType menuType = VMLeftMenuTopItemMain;
 
 switch (menuType) {
-    case RWTLeftMenuTopItemMain:
+    case VMLeftMenuTopItemMain:
         // ...
         break;
-    case RWTLeftMenuTopItemShows:
+    case VMLeftMenuTopItemShows:
         // ...
         break;
-    case RWTLeftMenuTopItemSchedule:
+    case VMLeftMenuTopItemSchedule:
         // ...
         break;
 }
@@ -455,12 +455,12 @@ switch (menuType) {
 
 ## Private Properties
 
-Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `RWTPrivate` or `private`) should never be used unless extending another class.   The Anonymous category can be shared/exposed for testing using the <headerfile>+Private.h file naming convention.
+Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `VMPrivate` or `private`) should never be used unless extending another class.   The Anonymous category can be shared/exposed for testing using the <headerfile>+Private.h file naming convention.
 
 **For Example:**
 
 ```objc
-@interface RWTDetailViewController ()
+@interface VMDetailViewController ()
 
 @property (strong, nonatomic) GADBannerView *googleAdView;
 @property (strong, nonatomic) ADBannerView *iAdView;
@@ -562,7 +562,7 @@ Where class constructor methods are used, these should always return type of 'in
 
 ```objc
 @interface Airplane
-+ (instancetype)airplaneWithType:(RWTAirplaneType)type;
++ (instancetype)airplaneWithType:(VMAirplaneType)type;
 @end
 ```
 
