@@ -40,6 +40,7 @@ Here are some of the documents from Apple that informed the style guide. If some
 * [CGRect Functions](#cgrect-functions)
 * [Golden Path](#golden-path)
 * [Error handling](#error-handling)
+* [Exceptions and Error Handling](#exceptions-and-error-handling)
 * [Singletons](#singletons)
 * [Line Breaks](#line-breaks)
 * [Xcode Project](#xcode-project)
@@ -647,6 +648,11 @@ if (error) {
 
 Some of Apple’s APIs write garbage values to the error parameter (if non-NULL) in successful cases, so switching on the error can cause false negatives (and subsequently crash).
 
+## Exceptions and Error Handling
+
+* Don't use exceptions for flow control.
+* Use exceptions **only** to indicate programmer error.
+* To indicate errors, use an `NSError **` argument .
 
 ## Singletons
 
