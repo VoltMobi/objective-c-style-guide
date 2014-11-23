@@ -423,14 +423,14 @@ There are times when the same code can be used for multiple cases, and a fall-th
 
 ```objc
 switch (condition) {
-  case 1:
-    // ** fall-through! **
-  case 2:
-    // code executed for values 1 and 2
-    break;
-  default: 
-    // ...
-    break;
+    case 1:
+        // ** fall-through! **
+    case 2:
+        // code executed for values 1 and 2
+        break;
+    default: 
+        // ...
+        break;
 }
 
 ```
