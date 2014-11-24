@@ -1,0 +1,17 @@
+BasedOnStyle: Google
+AlignTrailingComments: true
+AllowShortBlocksOnASingleLine: false
+AllowShortFunctionsOnASingleLine: false
+BreakBeforeBraces: Attach 
+ColumnLimit: 200
+IndentWidth: 4
+KeepEmptyLinesAtTheStartOfBlocks: true
+MaxEmptyLinesToKeep: 2
+ObjCSpaceAfterProperty: true
+ObjCSpaceBeforeProtocolList: true
+PointerAlignment: Right
+SpaceAfterCStyleCast: true
+SpacesBeforeTrailingComments: 1
+TabWidth: 8
+UseTab: Never
+ExperimentalAutoDetectBinPacking: true
