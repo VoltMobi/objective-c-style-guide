@@ -3,7 +3,7 @@ AlignTrailingComments: true
 AllowShortBlocksOnASingleLine: false
 AllowShortFunctionsOnASingleLine: false
 BreakBeforeBraces: Attach 
-ColumnLimit: 200
+ColumnLimit: 0
 IndentWidth: 4
 KeepEmptyLinesAtTheStartOfBlocks: true
 MaxEmptyLinesToKeep: 2
