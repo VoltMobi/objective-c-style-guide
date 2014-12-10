@@ -12,6 +12,7 @@ ObjCSpaceBeforeProtocolList: true
 PointerAlignment: Right
 SpaceAfterCStyleCast: true
 SpacesBeforeTrailingComments: 1
-TabWidth: 8
+SpacesInContainerLiterals: true
+TabWidth: 4
 UseTab: Never
 ExperimentalAutoDetectBinPacking: true

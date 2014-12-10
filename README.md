@@ -322,8 +322,8 @@ UIApplication.sharedApplication.delegate;
 **Preferred:**
 
 ```objc
-NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
-NSDictionary *productManagers = @{@"iPhone": @"Kate", @"iPad": @"Kamal", @"Mobile Web": @"Bill"};
+NSArray *names = @[ @"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul" ];
+NSDictionary *productManagers = @{ @"iPhone" : @"Kate", @"iPad" : @"Kamal", @"Mobile Web" : @"Bill" };
 NSNumber *shouldUseLiterals = @YES;
 NSNumber *buildingStreetNumber = @10018;
 ```
