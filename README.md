@@ -178,7 +178,7 @@ Constants should be camel-case with all words capitalized and prefixed by the re
 **Preferred:**
 
 ```objc
-static NSTimeInterval const VMTutorialViewControllerNavigationFadeAnimationDuration = 0.3;
+static NSTimeInterval const VMBTutorialViewControllerNavigationFadeAnimationDuration = 0.3;
 ```
 
 **Not Preferred:**
@@ -246,7 +246,7 @@ Direct access to instance variables that 'back' properties should be avoided exc
 **Preferred:**
 
 ```objc
-@interface VMTutorial : NSObject
+@interface VMBTutorial : NSObject
 
 @property (strong, nonatomic) NSString *tutorialName;
 
@@ -256,7 +256,7 @@ Direct access to instance variables that 'back' properties should be avoided exc
 **Not Preferred:**
 
 ```objc
-@interface VMTutorial : NSObject {
+@interface VMBTutorial : NSObject {
     NSString *tutorialName;
 }
 ```
@@ -344,9 +344,9 @@ Constants are preferred over in-line string literals or numbers, as they allow f
 **Preferred:**
 
 ```objc
-static NSString * const VMAboutViewControllerCompanyName = @"voltmobi.com";
+static NSString * const VMBAboutViewControllerCompanyName = @"voltmobi.com";
 
-static CGFloat const VMImageThumbnailHeight = 50.0;
+static CGFloat const VMBImageThumbnailHeight = 50.0;
 ```
 
 **Not Preferred:**
@@ -364,21 +364,21 @@ When using `enum`s, it is recommended to use the new fixed underlying type speci
 **For Example:**
 
 ```objc
-typedef NS_ENUM(NSInteger, VMLeftMenuTopItemType) {
-  VMLeftMenuTopItemMain,
-  VMLeftMenuTopItemShows,
-  VMLeftMenuTopItemSchedule
+typedef NS_ENUM(NSInteger, VMBLeftMenuTopItemType) {
+  VMBLeftMenuTopItemMain,
+  VMBLeftMenuTopItemShows,
+  VMBLeftMenuTopItemSchedule
 };
 ```
 
 You can also make explicit value assignments (showing older k-style constant definition):
 
 ```objc
-typedef NS_ENUM(NSInteger, VMGlobalConstants) {
-    VMPinSizeMin = 1,
-    VMPinSizeMax = 5,
-    VMPinCountMin = 100,
-    VMPinCountMax = 500,
+typedef NS_ENUM(NSInteger, VMBGlobalConstants) {
+    VMBPinSizeMin = 1,
+    VMBPinSizeMax = 5,
+    VMBPinCountMin = 100,
+    VMBPinCountMax = 500,
 };
 ```
 
@@ -438,16 +438,16 @@ switch (condition) {
 When using an enumerated type for a switch, 'default' is not needed.   For example:
 
 ```objc
-VMLeftMenuTopItemType menuType = VMLeftMenuTopItemMain;
+VMBLeftMenuTopItemType menuType = VMBLeftMenuTopItemMain;
 
 switch (menuType) {
-    case VMLeftMenuTopItemMain:
+    case VMBLeftMenuTopItemMain:
         // ...
         break;
-    case VMLeftMenuTopItemShows:
+    case VMBLeftMenuTopItemShows:
         // ...
         break;
-    case VMLeftMenuTopItemSchedule:
+    case VMBLeftMenuTopItemSchedule:
         // ...
         break;
 }
@@ -456,12 +456,12 @@ switch (menuType) {
 
 ## Private Properties
 
-Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `VMPrivate` or `private`) should never be used unless extending another class.   The Anonymous category can be shared/exposed for testing using the <headerfile>+Private.h file naming convention.
+Private properties should be declared in class extensions (anonymous categories) in the implementation file of a class. Named categories (such as `VMBPrivate` or `private`) should never be used unless extending another class.   The Anonymous category can be shared/exposed for testing using the <headerfile>+Private.h file naming convention.
 
 **For Example:**
 
 ```objc
-@interface VMDetailViewController ()
+@interface VMBDetailViewController ()
 
 @property (strong, nonatomic) GADBannerView *googleAdView;
 @property (strong, nonatomic) ADBannerView *iAdView;
@@ -563,7 +563,7 @@ Where class constructor methods are used, these should always return type of 'in
 
 ```objc
 @interface Airplane
-+ (instancetype)airplaneWithType:(VMAirplaneType)type;
++ (instancetype)airplaneWithType:(VMBAirplaneType)type;
 @end
 ```
 
