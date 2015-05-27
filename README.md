@@ -192,7 +192,7 @@ Properties should be camel-case with the leading word being lowercase. Use auto-
 **Preferred:**
 
 ```objc
-@property (strong, nonatomic) NSString *descriptiveVariableName;
+@property (copy, nonatomic) NSString *descriptiveVariableName;
 ```
 
 **Not Preferred:**
@@ -248,7 +248,7 @@ Direct access to instance variables that 'back' properties should be avoided exc
 ```objc
 @interface VMBTutorial : NSObject
 
-@property (strong, nonatomic) NSString *tutorialName;
+@property (copy, nonatomic) NSString *tutorialName;
 
 @end
 ```
@@ -270,7 +270,7 @@ Property attributes should be explicitly listed, and will help new programmers w
 
 ```objc
 @property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (strong, nonatomic) NSString *tutorialName;
+@property (copy, nonatomic) NSString *tutorialName;
 ```
 
 **Not Preferred:**
