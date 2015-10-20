@@ -4,7 +4,7 @@ This style guide outlines the coding conventions at [VoltMobi](http://volt.mobi)
 
 ## Credits
 
-Our style guide are mostly based on [raywenderlich.com Objective-C Style Guide](https://github.com/raywenderlich/objective-c-style-guide).
+Our style guide is mostly based on [raywenderlich.com Objective-C Style Guide](https://github.com/raywenderlich/objective-c-style-guide).
 
 ## Background
 
