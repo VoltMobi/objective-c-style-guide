@@ -25,17 +25,20 @@ Here are some of the documents from Apple that informed the style guide. If some
   * [Underscores](#underscores)
 * [Methods](#methods)
 * [Variables](#variables)
+* [Nullability Annotations](#nullability-annotations)
 * [Property Attributes](#property-attributes)
 * [Dot-Notation Syntax](#dot-notation-syntax)
 * [Literals](#literals)
 * [Constants](#constants)
 * [Enumerated Types](#enumerated-types)
 * [Case Statements](#case-statements)
+* [Lightweight Generics](#lightweight-generics)
 * [Private Properties](#private-properties)
 * [Booleans](#booleans)
 * [Conditionals](#conditionals)
   * [Ternary Operator](#ternary-operator)
 * [Init Methods](#init-methods)
+* [Forward Declarations](#forward-declarations)
 * [Class Constructor Methods](#class-constructor-methods)
 * [CGRect Functions](#cgrect-functions)
 * [Golden Path](#golden-path)
@@ -261,6 +264,31 @@ Direct access to instance variables that 'back' properties should be avoided exc
 }
 ```
 
+## Nullability Annotations
+
+Always include [nullability annotations](https://developer.apple.com/swift/blog/?id=25) in header files.
+
+Generally, it's a good idea to make the entirety of headers as audited for nullability, which makes any simple pointer type to be assumed as nonnull by the compiler. You do this by wrapping the whole file with the **NS_ASSUME_NONNULL_BEGIN** and **NS_ASSUME_NONNULL_END** macros. You can then opt any property or argument declaration that can take nil values out by annotating it as nullable.
+
+```objc
+NS_ASSUME_NONNULL_BEGIN
+...
+- (instancetype)initWithString(nullable NSString *)string;
+
+@property (nonatomic, copy, nullable) NSString *aNullableProperty;
+...
+NS_ASSUME_NONNULL_END
+```
+
+When annotating function or blocks, use the **_Nullable** keyword (available since Xcode 7), instead of the legacy **__nullable**
+
+```objc
+CGFloat VMBWidthForView(UIWindow * _Nullable window);
+```
+
+* Weak properties: They are nullified by the runtime. If not annotated with nil, API does not express intent fully.
+* There is mostly no sense using nullability annotations outside of interface declarations.
+* Annotations express intention but don't change the generated code. Checks for nil are still required in the implementation.
 
 ## Property Attributes
 
@@ -269,7 +297,7 @@ Property attributes should be explicitly listed, and will help new programmers w
 **Preferred:**
 
 ```objc
-@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic, nullable) IBOutlet UIView *containerView;
 @property (copy, nonatomic) NSString *tutorialName;
 ```
 
@@ -277,6 +305,7 @@ Property attributes should be explicitly listed, and will help new programmers w
 
 ```objc
 @property (nonatomic, weak) IBOutlet UIView *containerView;
+@property (nullable, weak, nonatomic) IBOutlet UILabel *label;
 @property (nonatomic) NSString *tutorialName;
 ```
 
@@ -453,6 +482,15 @@ switch (menuType) {
 }
 ```
 
+## Lightweight Generics
+
+Always use [lightweight generic parametrization](https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/InteractingWithObjective-CAPIs.html#//apple_ref/doc/uid/TP40014216-CH4-ID173) when declaring NSArray, NSSet and NSDictionary types. This tells the compiler which kind of objects these Foundation collection classes will contain. It improves readability, type-safety and interoperability with Swift.
+
+```objc
+@property (copy, nonatomic) NSArray<NSNumber *> *steps;
+@property (copy, nonatomic) NSDictionary<NSString *, NSString *> *wordsDictionary;
+@property (copy, nonatomic) NSSet<VMTask *> *tasks;
+```
 
 ## Private Properties
 
@@ -506,6 +544,18 @@ Conditional bodies should always use braces even when a conditional body could b
 ```objc
 if (!error) {
     return success;
+} else {
+	//do something
+}
+```
+
+This variant is also acceptable:
+```objc
+if (!error) {
+    return success;
+} 
+else {
+	//do something
 }
 ```
 
@@ -556,6 +606,24 @@ Init methods should follow the convention provided by Apple's generated code tem
 ```
 
 See [Class Constructor Methods](#class-constructor-methods) for link to article on instancetype.
+
+## Forward Declarations
+
+Use one line for each forward declarations:
+
+**Preferred:**
+```objc
+@protocol VMBModelPresenter;
+@protocol VMBModelInteractor;
+@class VMBDummyModelUpdater;
+@class VMBDefaultModelUpdater;
+```
+
+**Not Preferred:**
+```objc
+@protocol VMBModelPresenter, VMBModelInteractor;
+@class VMBDummyModelUpdater, VMBDefaultModelUpdater;
+```
 
 ## Class Constructor Methods
 
