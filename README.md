@@ -290,6 +290,18 @@ CGFloat VMBWidthForView(UIWindow * _Nullable window);
 * There is mostly no sense using nullability annotations outside of interface declarations.
 * Annotations express intention but don't change the generated code. Checks for nil are still required in the implementation.
 
+Typedef types don’t usually have an inherent nullability—they can easily be either nullable or non-nullable depending on the context. Therefore, typedef types are not assumed to be nonnull.
+
+**Preferred:**
+```objc
+typedef __nonnull id (^MyBlock)(__nonnull id object);
+```
+
+**Not Preferred:**
+```objc
+typedef id (^MyBlock)(id object);
+```
+
 ## Property Attributes
 
 Property attributes should be explicitly listed, and will help new programmers when reading the code.  The order of properties should be storage then atomicity, which is consistent with automatically generated code when connecting UI elements from Interface Builder.
